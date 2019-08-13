@@ -15,7 +15,7 @@ schedules:
     branches:
       include: [/eventloop.*/]
     env_vars: |
-      EVENT_LOOP_MANAGER='twisted'
+      EVENT_LOOP_MANAGER='gevent'
       EXCLUDE_LONG=1
     matrix:
       exclude:
