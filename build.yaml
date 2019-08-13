@@ -10,6 +10,18 @@ schedules:
       exclude:
         - python: [3.4, 3.6, 3.7]
 
+  event_loop_test:
+    schedule: per_commit
+    branches:
+      include: [/eventloop.*/]
+    env_vars: |
+      EVENT_LOOP_MANAGER='asyncore'
+      EXCLUDE_LONG=1
+    matrix:
+      exclude:
+        - python: [3.4, 3.6, 3.5, 2.7]
+        - cassandra: ['2.0', '2.1', '2.2', '3.0', 'test-dse']
+
   nightly_master:
     schedule: nightly
     branches:
@@ -141,7 +153,6 @@ cassandra:
 
 env:
   CYTHON:
-    - CYTHON
     - NO_CYTHON
 
 build:
